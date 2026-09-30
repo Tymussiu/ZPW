@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+         crossorigin="anonymous">
+         </script>
+    <script>
+        // $(document).on("keypress keyup keydown", function(event){
+        //     $("#eventType").text(event.type)
+         
+        // })
+
+        // $(document).on("mousemove", function(event){
+        //     $("#pageX").text(event.pageX)
+        //     $("#pageY").text(event.pageY)
+        // })
+
+        $(document).on("keypress", function(event){
+            if(event.key == "d"){
+                $("#kwadrat").css("margin-left", "+=100px")
+            }else if(event.key =="a"){
+                $("#kwadrat").css("margin-left", "-=100px")
+        }else if(event.key == "w"){
+            $("#kwadrat").css("margin-top", "-=100px")
+        }else if(event.key == "s"){
+            $("#kwadrat").css("margin-top", "+=100px")
+        }
+
+        if(event.key == " "){
+            $("#kwadrat").css({"background-color": "green","width": "+=50px","height": "+=50px"}
+        )
+            }else if(event.key == "-"){
+                $("#kwadrat").css({"background-color": "red","width": "-=50px","height": "-=50px"})
+        }
+    
+        $("#jabko").css({
+    "margin-left": Math.floor(Math.random() * 500 + 1),
+    "margin-top": Math.floor(Math.random() * 500 + 1)
+});
+
+    
+    })
+    </script>
+
+    <style>
+        #kwadrat{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        #jabko{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: rgb(0, 255, 21);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- <input type="text" id="pole">
+
+    <p>
+        Typ zdarzenia: <span id="eventType"></span><br>
+    </p>
+
+    <p>
+        Pozycja myszy:
+         X: <span id="pageX">---</span>,
+         Y: <span id="pageY">---</span>
+    </p> -->
+
+    <div id="kwadrat"></div>
+    <div id="jabko"></div>
+</body>
+</html>
