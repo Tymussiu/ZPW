@@ -1,79 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
-         crossorigin="anonymous">
-         </script>
-    <script>
+<html>
+    <head>
+        <title>
+            Zadania jquery
+        </title>
+        <meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+         crossorigin="anonymous"></script>
+<script>
+    $(function(){
+
         // $(document).on("keypress keyup keydown", function(event){
-        //     $("#eventType").text(event.type)
-         
-        // })
+        //     $("#eventType").text(event.type);
+        // });
 
         // $(document).on("mousemove", function(event){
-        //     $("#pageX").text(event.pageX)
-        //     $("#pageY").text(event.pageY)
-        // })
+        //     $("#pageX").text(event.pageX);
+        //     $("#pageY").text(event.pageY);
+        // });
+
+        $("#jablko").css({
+            "margin-left": Math.floor((Math.random() * 500) + 1),
+            "margin-top": Math.floor((Math.random() * 500) + 1)
+        });
+
+        let positionX = 0;
+        let positionY = 0;
 
         $(document).on("keypress", function(event){
+
             if(event.key == "d"){
-                $("#kwadrat").css("margin-left", "+=100px")
-            }else if(event.key =="a"){
-                $("#kwadrat").css("margin-left", "-=100px")
-        }else if(event.key == "w"){
-            $("#kwadrat").css("margin-top", "-=100px")
-        }else if(event.key == "s"){
-            $("#kwadrat").css("margin-top", "+=100px")
-        }
+                positionX += 10;
+                $("#kwadrat").css("margin-left", positionX + "px");
+            }
 
-        if(event.key == " "){
-            $("#kwadrat").css({"background-color": "green","width": "+=50px","height": "+=50px"}
-        )
-            }else if(event.key == "-"){
-                $("#kwadrat").css({"background-color": "red","width": "-=50px","height": "-=50px"})
-        }
-    
-        $("#jabko").css({
-    "margin-left": Math.floor(Math.random() * 500 + 1),
-    "margin-top": Math.floor(Math.random() * 500 + 1)
-});
+            if(event.key == "a"){
+                positionX -= 10;
+                $("#kwadrat").css("margin-left", positionX + "px");
+            }
 
-    
-    })
-    </script>
+            if(event.key == "w"){
+                positionY -= 10;
+                $("#kwadrat").css("margin-top", positionY + "px");
+            }
 
-    <style>
-        #kwadrat{
-            width: 200px;
-            height: 200px;
-            background-color: red;
-        }
-        #jabko{
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: rgb(0, 255, 21);
-            border-radius: 50%;
-        }
-    </style>
-</head>
-<body>
-    <!-- <input type="text" id="pole">
+            if(event.key == "s"){
+                positionY += 10;
+                $("#kwadrat").css("margin-top", positionY + "px");
+            }
 
-    <p>
-        Typ zdarzenia: <span id="eventType"></span><br>
-    </p>
+            let kwadrat = $("#kwadrat").offset();
+            let jablko = $("#jablko").offset();
 
-    <p>
-        Pozycja myszy:
-         X: <span id="pageX">---</span>,
-         Y: <span id="pageY">---</span>
-    </p> -->
+            let kwadratSzerokosc = $("#kwadrat").width();
+            let kwadratWysokosc = $("#kwadrat").height();
 
-    <div id="kwadrat"></div>
-    <div id="jabko"></div>
-</body>
+            let jablkoSzerokosc = $("#jablko").width();
+            let jablkoWysokosc = $("#jablko").height();
+
+            if(
+                kwadrat.left < jablko.left + jablkoSzerokosc &&
+                kwadrat.left + kwadratSzerokosc > jablko.left &&
+                kwadrat.top < jablko.top + jablkoWysokosc &&
+                kwadrat.top + kwadratWysokosc > jablko.top
+            ){
+                $("#jablko").hide();
+            }
+
+        });
+
+    });
+</script>
+
+
+        <style>
+           #kwadrat{
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                position: absolute;
+           }
+           #jablko{
+                width: 20px;
+                height: 20px;
+                background-color: green;
+                position: absolute;
+           }
+        </style>
+    </head>
+    <body>
+        <!-- <input type="text" id="pole">
+
+        <p>
+            Typ zdarzenia:
+            <span id="eventType">---</span>
+        </p>
+
+        <p>
+            Pozycja myszy:
+            X = <span id="pageX">---</span>,
+            Y = <span id="pageY">---</span>
+        </p> -->
+
+        <div id="kwadrat"></div>
+        <div id="jablko"></div>
+    </body>
 </html>
