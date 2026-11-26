@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>
+            Zadania jquery
+        </title>
+        <meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+         crossorigin="anonymous"></script>
+         <script>
+            $(function(){
+                $("#sprawdz").click(function(){
+                    let name = $("#imie").val().trim()
+                    if(name ===""){
+                        $("#blad").text("Pole jest wymagane")
+                    } else {
+                        $("#blad").text("twoje imie to  " + name)
+                    }
+                })
+
+                $("#wyslij").click(function(event){
+                    event.preventDefault()
+                    let surname = $("#nazwisko").val().trim()
+                    if(surname ===""){
+                        $("#baldnazwisko").text("Podaj nazwisko ").css("color", "red")
+                    } else {
+                        $("#baldnazwisko").text("WYSLANO FORMULAZ " ).css("color", "green")
+                    }
+                    $("#nazwisko").val("")
+                })
+                
+                // $("#sprawdzwiek").click(function(){
+                //     let wiek = Number(("#wiek").val())
+                //     if(isNaN(wiek) && wiek < 0){
+                //         $("#bladwiek").text("wiek musi byc liczba")
+                //     }else{
+                //         $("#bladwiek").text("masz"+wiek+"lat")
+                //     }
+                    
+                // })
+
+                $("#zapisz").click(function(){
+                    let ocena = Number(("#ocena").val()).trim()
+                    if(isNaN(ocena) && ocena < 1 && ocena > 6){
+                        $("#pocena").text("ocena musi byc liczba od 1 do 6")
+                }else{
+                    $("#pocena").text("twoja ocena to "+ocena)
+                }
+                })
+            })
+         </script>
+        <style>
+           
+        </style>
+    </head>
+    <body>
+        <input type="text" id="imie">
+        <button id="sprawdz">Sprawdz</button>
+        <p id="blad"></p>
+
+<form id="formularz">
+    <input type="text" id="nazwisko">
+        <button id="wyslij" type="submit">wyslij</button>
+        <p id="baldnazwisko"></p>
+</form>
+        
+        <hr>
+        <input type="text" id="wiek">
+        <button id="sprawdzwiek">Sprawdz</button>
+        <p id="bladwiek"></p>
+
+        <input type="text" id="ocena">
+        <button id="zapisz">zapisz</button>
+        <p id="pocena"></p>
+
+    </body>
+</html>

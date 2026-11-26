@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+         crossorigin="anonymous">
+         </script>
+    <script>
+        $(function(){
+            $("#ukryj").on("click", function(){
+                $("#tekst").hide()
+            })
+            $("#pokaz").on("click", function(){
+                $("#tekst").show()
+            })
+
+            $("#schowajkota").on("click", function(){
+                $("#kot").hide(2000)
+            })
+
+            $("#pokaz").on("click", function(){
+                $("#sekret").show()
+            })
+            $("#zapisz").on("click", function(){
+                $("#komunikat").show(1000)
+            })
+
+            $("#przelacz").on("click", function(){
+                $("#opis").toggle()
+            }) 
+
+            $("#znak").on("click", function(){
+                $("#osiem").toggle()
+            })
+
+            $("#kot2").on("click", function(){
+                $(this).slideUp(2000)
+            })
+
+            $("#kot2").on("dblclick", function(){
+                $(this).slideDown(2000)
+            })
+
+            $("#kot3").on("click", function(){
+                $(this).slideToggle(2000)
+            })
+            
+
+        })
+    </script>
+
+    <style>
+        
+    </style>
+</head>
+<body>
+    <img id="kot" src="kot.jpg" alt="">
+    <p id="tekst">gree</p>
+    <button id="ukryj">ukryj</button>
+    <button id="schowajkota">schowaj kota</button>
+
+    <p id="sekret" style="display: none;">wiadomosc</p>
+    <button id="pokaz">pokaz</button>
+
+    <p id="komunikat" style="display: none;">dziekujemy za zapisanie sie</p>
+    <button id="zapisz">zapisz sie</button>
+
+    <p id="opis">opis produktow</p>
+    <button id="przelacz">Pokaz/ukryj</button><br><br>
+    <label for="haslo">haslo</label>
+    <input type="password" id="haslo" name="haslo">
+    <p id="osiem">haslo musi miec 8 znakkow</p>
+    <button id="znak">?</button>
+
+    <img id="kot2" src="kot.jpg" alt="">
+        <img id="kot3" src="kot.jpg" alt="">
+
+
+</body>
+</html>
